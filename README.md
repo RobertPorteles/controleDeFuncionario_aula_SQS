@@ -21,8 +21,11 @@ Esse uso é natural e **coerente com a arquitetura limpa** e com o padrão de **
 - Uso de `UUID` para identificadores únicos
 
 ✅ A Main é o ponto de entrada.
+
 ✅ A Main instancia as dependências (mapper, repository, service, controller).
+
 ✅ A Main chama o controller.
+
 ✅ E o controller chama o método da interface, que é executado pela implementação.
 
 Resumo do fluxo de dependência (injeção manual):
@@ -47,7 +50,9 @@ public class FuncionarioController {
 		return funcionarioService.salvar(request);
 	}
 }
+
 ✅ Conclusão:
+
 A service (FuncionarioImpl) vai pro controller via construtor.
 
 Isso se chama injeção de dependência por construtor, uma prática comum e recomendada.
