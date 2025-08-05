@@ -44,7 +44,6 @@ public class Main {
         var enderecoRequest = new EnderecoRequest(logradouro, numero, complemento, bairro, cidade, estado, cep);
         var funcionarioRequest = new FuncionarioRequest(nome, cpf, enderecoRequest);
 
-
         // Injetando dependências
         var mapper = new MapperFuncionario();
         var repository = new FuncionarioRepository();
@@ -53,8 +52,6 @@ public class Main {
 
         // Chamar o controller
         var response = controller.cadastrarFuncionario(funcionarioRequest);
-
-        
 
 		System.out.println("\nFuncionário cadastrado com sucesso:");
 		System.out.println("ID: " + response.getId());
