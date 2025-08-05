@@ -2,16 +2,6 @@
 
 ---
 
-### 📌 Resumo
-
-As entidades são o **coração do domínio**, então os outros pacotes precisam acessá-las para:
-
-* **Manipular dados de forma estruturada** (`server`)
-* **Persistir no banco** (`repositories`)
-* **Transformar dados de entrada/saída** (`mapper`)
-
-Esse uso é natural e **coerente com a arquitetura limpa** e com o padrão de **camadas separadas**.
-
 ## 💡 Boas práticas aplicadas
 
 - Separação de responsabilidades (SRP)
@@ -22,7 +12,7 @@ Esse uso é natural e **coerente com a arquitetura limpa** e com o padrão de **
 
 ---
 
-# 🔁 Resumo do fluxo de dependência (injeção manual):
+## 🔁 Resumo do fluxo de dependência (injeção manual):
 
 ✅ A Main é o ponto de entrada.
 
@@ -54,7 +44,7 @@ public class FuncionarioController {
 	}
 }
 
-✅ Conclusão:
+## ✅ Conclusão:
 
 A service (FuncionarioImpl) vai pro controller via construtor.
 
@@ -62,7 +52,7 @@ Isso se chama injeção de dependência por construtor, uma prática comum e rec
 
 A interface atua como contrato, permitindo que o controller funcione sem acoplamento direto à implementação concreta.
 
-🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 Java 17+	Linguagem principal utilizada no desenvolvimento da aplicação.
 JDBC        (Java Database Connectivity) API para conexão e execução de comandos SQL com o banco de dados.
