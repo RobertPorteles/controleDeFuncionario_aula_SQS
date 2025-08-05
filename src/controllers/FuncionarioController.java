@@ -3,17 +3,17 @@ package controllers;
 import dtos.FuncionarioRequest;
 import dtos.FuncionarioResponse;
 import interfaces.FuncionarioServer;
-import server.FuncionarioImpl;
 
 public class FuncionarioController {
 
-	private final FuncionarioServer funcionarioService;
+    private final FuncionarioServer funcionarioService;
 
-	public FuncionarioController() {
-		this.funcionarioService = new FuncionarioImpl(); // agora injetando a interface
-	}
+    // Injeção da interface
+    public FuncionarioController(FuncionarioServer funcionarioService) {
+        this.funcionarioService = funcionarioService;
+    }
 
-	public FuncionarioResponse cadastrarFuncionario(FuncionarioRequest request) {
-		return funcionarioService.salvar(request);
-	}
+    public FuncionarioResponse cadastrarFuncionario(FuncionarioRequest request) {
+        return funcionarioService.salvar(request);
+    }
 }

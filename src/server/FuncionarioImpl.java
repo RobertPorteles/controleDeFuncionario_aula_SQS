@@ -10,16 +10,22 @@ import mapper.MapperFuncionario;
 import repositories.FuncionarioRepository;
 
 public class FuncionarioImpl implements FuncionarioServer {
+	
+	private final MapperFuncionario mapper;
+    private final FuncionarioRepository repository;
+    
+	   // Injetando dependências
+    public FuncionarioImpl(MapperFuncionario mapper, FuncionarioRepository repository) {
+        this.mapper = mapper;
+        this.repository = repository;
+    }
 
-	private final MapperFuncionario mapper = new MapperFuncionario();
-	private final FuncionarioRepository repository = new FuncionarioRepository();
-
-	@Override
-	public FuncionarioResponse salvar(FuncionarioRequest request) {
-		var funcionario = mapper.toEntity(request);
-		repository.inserir(funcionario);
-		return mapper.toResponse(funcionario);
-	}
+    @Override
+    public FuncionarioResponse salvar(FuncionarioRequest request) {
+        var funcionario = mapper.toEntity(request);
+        repository.inserir(funcionario);
+        return mapper.toResponse(funcionario);
+    }
 
 	@Override
 	public List<FuncionarioResponse> listarProdutos() {

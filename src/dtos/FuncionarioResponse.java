@@ -1,10 +1,9 @@
 package dtos;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class FuncionarioResponse implements Serializable {
+public class FuncionarioResponse {
 
 	private UUID id;
 	private String nome;

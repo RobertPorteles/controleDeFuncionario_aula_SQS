@@ -1,8 +1,6 @@
 package dtos;
 
-import java.io.Serializable;
-
-public class FuncionarioRequest implements Serializable {
+public class FuncionarioRequest {
 
 	private String nome;
 	private String cpf;

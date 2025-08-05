@@ -1,9 +1,8 @@
 package dtos;
 
-import java.io.Serializable;
 import java.util.UUID;
 
-public class EnderecoResponse implements Serializable {
+public class EnderecoResponse{
 
 	private UUID id;
 	private String logradouro;

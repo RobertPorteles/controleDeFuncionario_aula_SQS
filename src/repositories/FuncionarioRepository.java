@@ -7,7 +7,7 @@ public class FuncionarioRepository {
 
     public void inserir(Funcionario funcionario) {
         try {
-            var host = "jdbc:mysql://localhost:3306/banco?useSSL=false&serverTimezone=UTC";
+            var host = "jdbc:mysql://localhost:3306/banco?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
             var user = "usuario";
             var pass = "senha";
 

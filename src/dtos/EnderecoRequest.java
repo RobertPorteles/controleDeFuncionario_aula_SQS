@@ -1,8 +1,6 @@
 package dtos;
 
-import java.io.Serializable;
-
-public class EnderecoRequest implements Serializable {
+public class EnderecoRequest  {
 
 	private String logradouro;
 	private String numero;

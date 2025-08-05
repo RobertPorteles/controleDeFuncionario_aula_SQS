@@ -5,6 +5,9 @@ import java.util.Scanner;
 import controllers.FuncionarioController;
 import dtos.EnderecoRequest;
 import dtos.FuncionarioRequest;
+import mapper.MapperFuncionario;
+import repositories.FuncionarioRepository;
+import server.FuncionarioImpl;
 
 public class Main {
 	public static void main(String[] args) {
@@ -38,12 +41,20 @@ public class Main {
 		String cep = scanner.nextLine();
 
 		// Criar DTOs
-		var enderecoRequest = new EnderecoRequest(logradouro, numero, complemento, bairro, cidade, estado, cep);
-		var funcionarioRequest = new FuncionarioRequest(nome, cpf, enderecoRequest);
+        var enderecoRequest = new EnderecoRequest(logradouro, numero, complemento, bairro, cidade, estado, cep);
+        var funcionarioRequest = new FuncionarioRequest(nome, cpf, enderecoRequest);
 
-		// Chamar o controller
-		var controller = new FuncionarioController();
-		var response = controller.cadastrarFuncionario(funcionarioRequest);
+
+        // Injetando dependências
+        var mapper = new MapperFuncionario();
+        var repository = new FuncionarioRepository();
+        var service = new FuncionarioImpl(mapper, repository);
+        var controller = new FuncionarioController(service);
+
+        // Chamar o controller
+        var response = controller.cadastrarFuncionario(funcionarioRequest);
+
+        
 
 		System.out.println("\nFuncionário cadastrado com sucesso:");
 		System.out.println("ID: " + response.getId());
