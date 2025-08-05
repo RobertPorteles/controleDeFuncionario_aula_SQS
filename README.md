@@ -20,6 +20,8 @@ Esse uso é natural e **coerente com a arquitetura limpa** e com o padrão de **
 - Camadas desacopladas (Controller → Service → Repository)
 - Uso de `UUID` para identificadores únicos
 
+---
+
 ✅ A Main é o ponto de entrada.
 
 ✅ A Main instancia as dependências (mapper, repository, service, controller).
@@ -31,6 +33,7 @@ Esse uso é natural e **coerente com a arquitetura limpa** e com o padrão de **
 Resumo do fluxo de dependência (injeção manual):
 
 🔁 Resumo do fluxo de dependência (injeção manual):
+
 var service = new FuncionarioImpl(mapper, repository); // <--- Aqui criamos a service
 var controller = new FuncionarioController(service);    // <--- Injetamos no controller
 
