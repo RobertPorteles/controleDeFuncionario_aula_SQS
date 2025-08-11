@@ -6,14 +6,14 @@ import interfaces.FuncionarioServer;
 
 public class FuncionarioController {
 
-    private final FuncionarioServer funcionarioService;
+	private final FuncionarioServer funcionarioService;
 
-    // Injeção da interface
-    public FuncionarioController(FuncionarioServer funcionarioService) {
-        this.funcionarioService = funcionarioService;
-    }
+	// Injeção da interface
+	public FuncionarioController(FuncionarioServer funcionarioService) {
+		this.funcionarioService = funcionarioService;
+	}
 
-    public FuncionarioResponse cadastrarFuncionario(FuncionarioRequest request) {
-        return funcionarioService.salvar(request);
-    }
+	public FuncionarioResponse cadastrarFuncionario(FuncionarioRequest request) {
+		return funcionarioService.salvar(request);
+	}
 }

@@ -2,7 +2,7 @@ package dtos;
 
 import java.util.UUID;
 
-public class EnderecoResponse{
+public class EnderecoResponse {
 
 	private UUID id;
 	private String logradouro;

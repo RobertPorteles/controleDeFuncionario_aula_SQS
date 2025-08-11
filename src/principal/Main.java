@@ -6,6 +6,7 @@ import controllers.FuncionarioController;
 import dtos.EnderecoRequest;
 import dtos.FuncionarioRequest;
 import mapper.MapperFuncionario;
+import repositories.EnderecoRepository;
 import repositories.FuncionarioRepository;
 import server.FuncionarioImpl;
 
@@ -46,8 +47,9 @@ public class Main {
 
         // Injetando dependências
         var mapper = new MapperFuncionario();
-        var repository = new FuncionarioRepository();
-        var service = new FuncionarioImpl(mapper, repository);
+        var funcionario = new FuncionarioRepository();
+        var endereco = new EnderecoRepository();
+        var service = new FuncionarioImpl(mapper, funcionario, endereco);
         var controller = new FuncionarioController(service);
 
         // Chamar o controller

@@ -52,6 +52,35 @@ Isso se chama injeção de dependência por construtor, uma prática comum e rec
 
 A interface atua como contrato, permitindo que o controller funcione sem acoplamento direto à implementação concreta.
 
+
+## Atualização — Persistência JDBC + Transação (11/08/2025 00:30)
+
+**O que foi implementado**
+- Fluxo de persistência com **JDBC puro** usando `ConnectionFactory`.
+- `FuncionarioImpl` passa a **controlar a transação** (`setAutoCommit(false)`, `commit`/`rollback`).
+- Repositórios **stateless** recebem a mesma `Connection` e **não a fecham**.
+- **Correção de FK** (`funcionario.endereco_id`): inserção do **endereço antes** do funcionário.
+- **UUIDs gerados nas entidades** (`Funcionario` e `Endereco`), removendo lógica de ID do mapper/repos.
+- Validações **fail-fast** no service (invariantes mínimas).
+
+**Motivação**
+Garantir **atomicidade** e **consistência referencial** ao salvar funcionário + endereço, evitando registros órfãos e erros de FK.
+
+**Como testar rapidamente**
+1. Execute a aplicação (método `main` ou endpoint de criação).
+2. Verifique no banco:
+   ```sql
+   SELECT * FROM endereco;
+   SELECT * FROM funcionario;
+
+Do jeito que está eles estão acoplados em dois pontos.
+
+Service → JDBC (Connection)
+O FuncionarioImpl passa java.sql.Connection para os repositórios. Isso vaza infraestrutura para o caso de uso. É acoplamento desnecessário ao JDBC.
+
+Service → implementação concreta de repositório
+Se você injeta new FuncionarioRepository() (classe concreta), o service fica acoplado à implementação, não ao contrato.
+
 ## 🛠️ Tecnologias Utilizadas
 
 Java 17+	Linguagem principal utilizada no desenvolvimento da aplicação.
