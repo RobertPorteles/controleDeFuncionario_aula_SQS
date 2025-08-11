@@ -59,9 +59,6 @@ A interface atua como contrato, permitindo que o controller funcione sem acoplam
 - Fluxo de persistência com **JDBC puro** usando `ConnectionFactory`.
 - `FuncionarioImpl` passa a **controlar a transação** (`setAutoCommit(false)`, `commit`/`rollback`).
 - Repositórios **stateless** recebem a mesma `Connection` e **não a fecham**.
-- **Correção de FK** (`funcionario.endereco_id`): inserção do **endereço antes** do funcionário.
-- **UUIDs gerados nas entidades** (`Funcionario` e `Endereco`), removendo lógica de ID do mapper/repos.
-- Validações **fail-fast** no service (invariantes mínimas).
 
 **Motivação**
 Garantir **atomicidade** e **consistência referencial** ao salvar funcionário + endereço, evitando registros órfãos e erros de FK.
